@@ -189,7 +189,7 @@ window.onload = () => {
     "mi memoria, momentos en donde|",
     "me da mucho miedo perderte|",
     "y solo quiero que me abraces|",
-    "con todas tus fuerzas.|",
+    "con todas tus fuerzas.||",
     "Pero sobre todo, quiero que|",
     "sigamos fortaleciendo esta|",
     "bonita conexion que tenemos,|",
