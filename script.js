@@ -17,13 +17,13 @@ let HAS_STARTED_TYPING = false,
     LAST_TYPE_TIMESTAMP = 0
 
 const MIN_COL = 9,
-      MAX_COL = 36,
+      MAX_COL = 34,
       MIN_ROW = 4,
-      MAX_ROW = 44,
+      MAX_ROW = 32,
       LETTER_WIDTH = 10.8,
       LETTER_HEIGHT = 20,
       COLORS = {
-        COLOR1: 'rgb(255, 64, 129)', 
+        COLOR1: 'rgb(255, 64, 129)',
         COLOR2: 'rgb(194, 24, 91)',
         COLOR3: 'rgb(255, 128, 171)',
         COLOR4: 'rgb(216, 27, 96)',
@@ -32,10 +32,7 @@ const MIN_COL = 9,
 
 const STATE = {
   range: 0.1,
-  pos: {
-    row: MIN_ROW,
-    col: MIN_COL
-  }
+  pos: { row: MIN_ROW, col: MIN_COL }
 }
 
 const getRandColor = () => {
@@ -50,52 +47,28 @@ const getRandColor = () => {
 }
 
 const getRandPosOffScreen = () => {
-  const lowX1 = 0 - (window.innerWidth * 0.3),
-        highX1 = 0 - (window.innerWidth * 0.2),
+  const lowX1 = 0-(window.innerWidth*0.3), highX1 = 0-(window.innerWidth*0.2),
         lowY1 = 0, highY1 = window.innerHeight,
-        lowX2 = window.innerWidth * 1.2,
-        highX2 = window.innerWidth * 1.3,
+        lowX2 = window.innerWidth*1.2, highX2 = window.innerWidth*1.3,
         lowY2 = 0, highY2 = window.innerHeight,
         lowX3 = 0, highX3 = window.innerWidth,
-        lowY3 = 0 - (window.innerHeight * 0.3),
-        highY3 = 0 - (window.innerHeight * 0.2),
+        lowY3 = 0-(window.innerHeight*0.3), highY3 = 0-(window.innerHeight*0.2),
         lowX4 = 0, highX4 = window.innerWidth,
-        lowY4 = window.innerHeight * 1.2,
-        highY4 = window.innerHeight * 1.3
-  
+        lowY4 = window.innerHeight*1.2, highY4 = window.innerHeight*1.3
+
   const rand = Math.floor((Math.random() * 4) + 1)
   let x = 0, y = 0
-  
   switch(rand){
-    case 1:
-      x = Math.floor(Math.random() * (highX1 - lowX1 + 1)) + lowX1
-      y = Math.floor(Math.random() * (highY1 - lowY1)) + lowY1
-      break
-    case 2:
-      x = Math.floor(Math.random() * (highX2 - lowX2 + 1)) + lowX2
-      y = Math.floor(Math.random() * (highY2 - lowY2)) + lowY2
-      break
-    case 3:
-      x = Math.floor(Math.random() * (highX3 - lowX3 + 1)) + lowX3
-      y = Math.floor(Math.random() * (highY3 - lowY3)) + lowY3
-      break
-    case 4:
-      x = Math.floor(Math.random() * (highX4 - lowX4 + 1)) + lowX4
-      y = Math.floor(Math.random() * (highY4 - lowY4)) + lowY4
-      break
+    case 1: x = Math.floor(Math.random()*(highX1-lowX1+1))+lowX1; y = Math.floor(Math.random()*(highY1-lowY1))+lowY1; break
+    case 2: x = Math.floor(Math.random()*(highX2-lowX2+1))+lowX2; y = Math.floor(Math.random()*(highY2-lowY2))+lowY2; break
+    case 3: x = Math.floor(Math.random()*(highX3-lowX3+1))+lowX3; y = Math.floor(Math.random()*(highY3-lowY3))+lowY3; break
+    case 4: x = Math.floor(Math.random()*(highX4-lowX4+1))+lowX4; y = Math.floor(Math.random()*(highY4-lowY4))+lowY4; break
   }
   return { x, y }
 }
 
-const setLetterPos = (letter, x, y) => {
-  setStyle(letter, 'left', x + 'px')
-  setStyle(letter, 'top', y + 'px')
-}
-
-const setLetterColor = letter => {
-  const color = getRandColor()
-  setStyle(letter, 'color', color)
-}
+const setLetterPos = (letter, x, y) => { setStyle(letter,'left',x+'px'); setStyle(letter,'top',y+'px') }
+const setLetterColor = letter => setStyle(letter, 'color', getRandColor())
 
 const createLetter = key => {
   const letter = document.createElement('div')
@@ -106,26 +79,15 @@ const createLetter = key => {
   return letter
 }
 
-const setInitialLetterPos = letter => {
-  const pos = getRandPosOffScreen()
-  setLetterPos(letter, pos.x, pos.y)
-}
+const setInitialLetterPos = letter => { const pos = getRandPosOffScreen(); setLetterPos(letter, pos.x, pos.y) }
 
 const bumpLetterPos = isUp => {
   if(isUp){
-    if(STATE.pos.col < MAX_COL){
-      STATE.pos.col = Math.min(STATE.pos.col + 1, MAX_COL)
-    } else {
-      STATE.pos.col = MIN_COL
-      STATE.pos.row = Math.min(STATE.pos.row + 1, MAX_ROW)
-    }
+    if(STATE.pos.col < MAX_COL) STATE.pos.col = Math.min(STATE.pos.col+1, MAX_COL)
+    else { STATE.pos.col = MIN_COL; STATE.pos.row = Math.min(STATE.pos.row+1, MAX_ROW) }
   } else {
-    if(STATE.pos.col > MIN_COL){
-      STATE.pos.col = Math.max(STATE.pos.col - 1, MIN_COL)
-    } else {
-      STATE.pos.col = MAX_COL
-      STATE.pos.row = Math.max(STATE.pos.row - 1, MIN_ROW)
-    }
+    if(STATE.pos.col > MIN_COL) STATE.pos.col = Math.max(STATE.pos.col-1, MIN_COL)
+    else { STATE.pos.col = MAX_COL; STATE.pos.row = Math.max(STATE.pos.row-1, MIN_ROW) }
   }
 }
 
@@ -136,23 +98,14 @@ const bumpCursorPos = () => {
 }
 
 const determineFinalLetterPos = () => {
-  let x = 0, y = 0
-  if(STATE.pos.col <= MAX_COL){
-    x = STATE.pos.col * LETTER_WIDTH
-    y = STATE.pos.row * LETTER_HEIGHT
-  } else {
-    x = STATE.pos.col * LETTER_WIDTH
-    y = (STATE.pos.row + 1) * LETTER_HEIGHT
-  }
+  let x = STATE.pos.col * LETTER_WIDTH,
+      y = STATE.pos.col <= MAX_COL ? STATE.pos.row * LETTER_HEIGHT : (STATE.pos.row+1) * LETTER_HEIGHT
   bumpLetterPos(true)
   bumpCursorPos()
   return {x, y}
 }
 
-const setFinalLetterPos = letter => {
-  const pos = determineFinalLetterPos()
-  setLetterPos(letter, pos.x, pos.y)
-}
+const setFinalLetterPos = letter => { const pos = determineFinalLetterPos(); setLetterPos(letter, pos.x, pos.y) }
 
 const initializeLetter = key => {
   const letter = createLetter(key)
@@ -175,7 +128,6 @@ let typeInterval = null
 const typeSentence = sentence => {
   let i = 0
   HAS_STARTED_TYPING = true
-  
   typeInterval = setInterval(() => {
     if (sentence[i] === '|') {
       STATE.pos.col = MIN_COL
@@ -184,7 +136,6 @@ const typeSentence = sentence => {
     } else {
       typeLetter(sentence[i])
     }
-
     if(i === sentence.length - 1) {
       clearInterval(typeInterval)
       setTimeout(() => {
@@ -193,16 +144,13 @@ const typeSentence = sentence => {
       }, 1000)
     }
     i++
-  }, 120) 
+  }, 120)
 }
 
 const checkIfTyping = () => {
   const timeToLastType = moment() - LAST_TYPE_TIMESTAMP
-  if(!PAPER.classList.contains('typing') && timeToLastType <= 300){
-    addClass(PAPER, 'typing')
-  } else if(PAPER.classList.contains('typing') && timeToLastType > 300){
-    removeClass(PAPER, 'typing')
-  }
+  if(!PAPER.classList.contains('typing') && timeToLastType <= 300) addClass(PAPER, 'typing')
+  else if(PAPER.classList.contains('typing') && timeToLastType > 300) removeClass(PAPER, 'typing')
 }
 
 window.onload = () => {
@@ -216,16 +164,12 @@ window.onload = () => {
     document.getElementById('music-btn').style.display = 'none'
   })
 
-  const romanticLetter = "||||Feliz Aniversariooooo ositaaa!!||No se como expresar lo que siento|en este momento porque no encuentro|las palabras correctas para decirlo.||Un año juntos donde ha habido de|todo, momentos increibles los cuales|siempre llevare en mi memoria,|momentos en donde me da mucho|miedo perderte y solo quiero que|me abraces con todas tus fuerzas.||Pero sobre todo, quiero que sigamos|fortaleciendo esta bonita conexion|que tenemos, donde aprendamos y nos|sigamos diciendo cuanto nos amamos.||Te amo mi osita ❤️"
+  const romanticLetter = "||||Feliz Aniversariooooo ositaaa!!||No se como expresar lo que|siento en este momento porque|no encuentro las palabras|correctas para decirlo.||Un año juntos con momentos|increibles que siempre llevare|en mi memoria, donde me da|miedo perderte y solo quiero|que me abraces con tus fuerzas.||Pero sobre todo, quiero que|sigamos fortaleciendo esta|bonita conexion que tenemos,|diciendono cuanto nos amamos.||Te amo mi osita ❤️"
 
-  setTimeout(() => {
-    typeSentence(romanticLetter)
-  }, 1000)
-
+  setTimeout(() => typeSentence(romanticLetter), 1000)
   setInterval(() => checkIfTyping(), 300)
 }
 
-// Slideshow
 let currentSlide = 0
 setInterval(() => {
   const slides = document.querySelectorAll('.slide')
