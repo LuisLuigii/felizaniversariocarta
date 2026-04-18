@@ -17,9 +17,9 @@ let HAS_STARTED_TYPING = false,
     LAST_TYPE_TIMESTAMP = 0
 
 const MIN_COL = 9,
-      MAX_COL = 34,
+      MAX_COL = 28,
       MIN_ROW = 4,
-      MAX_ROW = 32,
+      MAX_ROW = 35,
       LETTER_WIDTH = 10.8,
       LETTER_HEIGHT = 20,
       COLORS = {
@@ -67,7 +67,11 @@ const getRandPosOffScreen = () => {
   return { x, y }
 }
 
-const setLetterPos = (letter, x, y) => { setStyle(letter,'left',x+'px'); setStyle(letter,'top',y+'px') }
+const setLetterPos = (letter, x, y) => {
+  setStyle(letter, 'left', x + 'px')
+  setStyle(letter, 'top', y + 'px')
+}
+
 const setLetterColor = letter => setStyle(letter, 'color', getRandColor())
 
 const createLetter = key => {
@@ -79,15 +83,18 @@ const createLetter = key => {
   return letter
 }
 
-const setInitialLetterPos = letter => { const pos = getRandPosOffScreen(); setLetterPos(letter, pos.x, pos.y) }
+const setInitialLetterPos = letter => {
+  const pos = getRandPosOffScreen()
+  setLetterPos(letter, pos.x, pos.y)
+}
 
 const bumpLetterPos = isUp => {
   if(isUp){
-    if(STATE.pos.col < MAX_COL) STATE.pos.col = Math.min(STATE.pos.col+1, MAX_COL)
-    else { STATE.pos.col = MIN_COL; STATE.pos.row = Math.min(STATE.pos.row+1, MAX_ROW) }
+    if(STATE.pos.col < MAX_COL) STATE.pos.col = Math.min(STATE.pos.col + 1, MAX_COL)
+    else { STATE.pos.col = MIN_COL; STATE.pos.row = Math.min(STATE.pos.row + 1, MAX_ROW) }
   } else {
-    if(STATE.pos.col > MIN_COL) STATE.pos.col = Math.max(STATE.pos.col-1, MIN_COL)
-    else { STATE.pos.col = MAX_COL; STATE.pos.row = Math.max(STATE.pos.row-1, MIN_ROW) }
+    if(STATE.pos.col > MIN_COL) STATE.pos.col = Math.max(STATE.pos.col - 1, MIN_COL)
+    else { STATE.pos.col = MAX_COL; STATE.pos.row = Math.max(STATE.pos.row - 1, MIN_ROW) }
   }
 }
 
@@ -98,14 +105,19 @@ const bumpCursorPos = () => {
 }
 
 const determineFinalLetterPos = () => {
-  let x = STATE.pos.col * LETTER_WIDTH,
-      y = STATE.pos.col <= MAX_COL ? STATE.pos.row * LETTER_HEIGHT : (STATE.pos.row+1) * LETTER_HEIGHT
+  const x = STATE.pos.col * LETTER_WIDTH,
+        y = STATE.pos.col <= MAX_COL
+            ? STATE.pos.row * LETTER_HEIGHT
+            : (STATE.pos.row + 1) * LETTER_HEIGHT
   bumpLetterPos(true)
   bumpCursorPos()
-  return {x, y}
+  return { x, y }
 }
 
-const setFinalLetterPos = letter => { const pos = determineFinalLetterPos(); setLetterPos(letter, pos.x, pos.y) }
+const setFinalLetterPos = letter => {
+  const pos = determineFinalLetterPos()
+  setLetterPos(letter, pos.x, pos.y)
+}
 
 const initializeLetter = key => {
   const letter = createLetter(key)
@@ -154,7 +166,6 @@ const checkIfTyping = () => {
 }
 
 window.onload = () => {
-  // 🎵 Música
   const audio = new Audio('cancion.mp3')
   audio.loop = true
   audio.volume = 0.5
@@ -164,7 +175,35 @@ window.onload = () => {
     document.getElementById('music-btn').style.display = 'none'
   })
 
-  const romanticLetter = "||||Feliz Aniversariooooo ositaaa!!||No se como expresar lo que|siento en este momento porque|no encuentro las palabras|correctas para decirlo.||Un año juntos con momentos|increibles que siempre llevare|en mi memoria, donde me da|miedo perderte y solo quiero|que me abraces con tus fuerzas.||Pero sobre todo, quiero que|sigamos fortaleciendo esta|bonita conexion que tenemos,|diciendono cuanto nos amamos.||Te amo mi osita ❤️"
+  // Maximo ~19 caracteres por linea para que no se corten palabras
+  const romanticLetter = [
+    "||||",
+    "Feliz Aniversario|",
+    "ositaaa!! 🎉||",
+    "No se como|",
+    "expresar lo que|",
+    "siento porque no|",
+    "encuentro las|",
+    "palabras correctas.|",
+    "|",
+    "Un año juntos con|",
+    "momentos increibles|",
+    "que llevare siempre|",
+    "en mi memoria.|",
+    "|",
+    "Me da miedo|",
+    "perderte y solo|",
+    "quiero que me|",
+    "abraces con todas|",
+    "tus fuerzas amor.|",
+    "|",
+    "Quiero que sigamos|",
+    "fortaleciendo esta|",
+    "conexion que|",
+    "tenemos juntos.|",
+    "|",
+    "Te amo mi osita ❤️"
+  ].join('')
 
   setTimeout(() => typeSentence(romanticLetter), 1000)
   setInterval(() => checkIfTyping(), 300)
