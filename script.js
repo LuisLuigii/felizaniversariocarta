@@ -21,7 +21,7 @@ const paperWidth = isMobile ? window.innerWidth * 0.95 : Math.min(window.innerWi
 const usablePaperWidth = paperWidth - 100
 
 const MIN_COL = 9,
-      MAX_COL = isMobile ? Math.floor(usablePaperWidth / 8.5) - 2 : 38,
+      MAX_COL = isMobile ? Math.floor(usablePaperWidth / 11) : 38,
       MIN_ROW = 4,
       MAX_ROW = isMobile ? 70 : 32,
       LETTER_WIDTH = isMobile ? 8.5 : 10.8,
