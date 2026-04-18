@@ -194,8 +194,8 @@ window.onload = () => {
     "sigamos fortaleciendo esta|",
     "bonita conexion que tenemos,|",
     "donde aprendamos y nos sigamos|",
-    "diciendo cuanto nos amamos|",
-    "el uno al otro.|",
+    "diciendo cuanto nos|",
+    "amamos el uno al otro.|",
     "Te amo mi osita ❤️"
   ].join('')
 
