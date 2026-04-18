@@ -16,12 +16,14 @@ const WRAPPER = getEl('wrapper'),
 let HAS_STARTED_TYPING = false,
     LAST_TYPE_TIMESTAMP = 0
 
+const isMobile = window.innerWidth < 600
+
 const MIN_COL = 9,
-      MAX_COL = 38,
+      MAX_COL = isMobile ? 24 : 38,
       MIN_ROW = 4,
-      MAX_ROW = 32,
-      LETTER_WIDTH = 10.8,
-      LETTER_HEIGHT = 20,
+      MAX_ROW = isMobile ? 50 : 32,
+      LETTER_WIDTH = isMobile ? 8.5 : 10.8,
+      LETTER_HEIGHT = isMobile ? 18 : 20,
       COLORS = {
         COLOR1: 'rgb(255, 64, 129)',
         COLOR2: 'rgb(194, 24, 91)',
