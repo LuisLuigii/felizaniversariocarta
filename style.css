@@ -13,12 +13,11 @@ html, body, #wrapper {
 
 #wrapper #paper {
   background-color: #fff9fa; border-radius: 2px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;
-  height: 750px; left: 50%; margin: 50px 0px 50px 0px;
-  overflow: hidden; position: relative; top: 0px;
+  box-shadow: rgba(0,0,0,0.25) 0px 14px 45px, rgba(0,0,0,0.22) 0px 10px 18px;
+  height: 950px; left: 50%; margin: 50px 0px;
+  overflow: hidden; position: relative;
   transform: translateX(-50%);
-  width: 90%;
-  max-width: 500px;
+  width: 90%; max-width: 500px;
 }
 
 #wrapper #paper.typing {
@@ -30,8 +29,7 @@ html, body, #wrapper {
   padding-top: 30px; margin-bottom: -15px; z-index: 10 !important;
 }
 .news-letter {
-  height: 45px;
-  width: auto; margin: 0 2px;
+  height: 45px; width: auto; margin: 0 2px;
   box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
   z-index: 10 !important;
 }
@@ -42,19 +40,20 @@ html, body, #wrapper {
 .news-space { width: 25px; }
 
 #wrapper #paper #cursor {
-  animation: blink 1.2s linear infinite; background-color: #ff4081;
-  height: 20px; left: 90px; position: absolute; top: 80px; width: 2px;
-  margin-top: 20px;
+  animation: blink 1.2s linear infinite;
+  background-color: #ff4081;
+  height: 20px; left: 90px; position: absolute; top: 80px;
+  width: 2px; margin-top: 20px;
 }
 
 #wrapper #paper .dot {
   background-color: #ff80ab; border-radius: 1000px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 10px inset, rgba(0, 0, 0, 0.23) 0px 3px 10px inset;
+  box-shadow: rgba(0,0,0,0.16) 0px 3px 10px inset, rgba(0,0,0,0.23) 0px 3px 10px inset;
   height: 25px; left: 25px; position: absolute; width: 25px; z-index: 2;
 }
 #wrapper #paper .dot#dot1 { top: 70px; }
-#wrapper #paper .dot#dot2 { top: 370px; }
-#wrapper #paper .dot#dot3 { top: 670px; }
+#wrapper #paper .dot#dot2 { top: 440px; }
+#wrapper #paper .dot#dot3 { top: 820px; }
 
 #wrapper #paper #vertical-margin {
   background-color: rgba(255, 64, 129, 0.5);
@@ -63,7 +62,8 @@ html, body, #wrapper {
 
 #wrapper #paper #horizontal-margins .horizontal-margin {
   background-color: rgba(255, 128, 171, 0.4);
-  color: transparent; font-size: 0px; height: 2px; left: 0px; position: absolute; width: 100%;
+  color: transparent; font-size: 0px; height: 2px;
+  left: 0px; position: absolute; width: 100%;
 }
 
 .horizontal-margin:nth-child(1)  { top: 60px; }
@@ -102,37 +102,53 @@ html, body, #wrapper {
 .horizontal-margin:nth-child(34) { top: 720px; }
 .horizontal-margin:nth-child(35) { top: 740px; }
 .horizontal-margin:nth-child(36) { top: 760px; }
+.horizontal-margin:nth-child(37) { top: 780px; }
+.horizontal-margin:nth-child(38) { top: 800px; }
+.horizontal-margin:nth-child(39) { top: 820px; }
+.horizontal-margin:nth-child(40) { top: 840px; }
+.horizontal-margin:nth-child(41) { top: 860px; }
+.horizontal-margin:nth-child(42) { top: 880px; }
+.horizontal-margin:nth-child(43) { top: 900px; }
+.horizontal-margin:nth-child(44) { top: 920px; }
+.horizontal-margin:nth-child(45) { top: 940px; }
+.horizontal-margin:nth-child(46) { top: 960px; }
 
 #wrapper #paper #letters {
-  backface-visibility: hidden; min-height: 100%; overflow-x: hidden; overflow-y: auto; width: 100%;
+  backface-visibility: hidden;
+  min-height: 100%; overflow-x: hidden; overflow-y: auto; width: 100%;
 }
 
 .letter {
   display: inline-block; font-weight: 400;
-  height: 40px;
-  margin-left: 2px;
-  position: absolute; text-align: center; transition: all 0.5s, color 0.1s;
-  width: -20px;
-  font-size: 22px;
-  line-height: 40px;
-  margin-top: 10px;
+  height: 40px; margin-left: 2px;
+  position: absolute; text-align: center;
+  transition: all 0.5s, color 0.1s;
+  width: -20px; font-size: 22px;
+  line-height: 40px; margin-top: 10px;
   letter-spacing: 20px !important;
 }
 .letter.off-screen {
-  font-weight: 700; transform: scale3d(10, 10, 10) rotate(1080deg);
+  font-weight: 700;
+  transform: scale3d(10, 10, 10) rotate(1080deg);
 }
 
+/* ── Foto: aparece al fondo sin tapar texto ── */
 #photo-container {
-  position: absolute; bottom: 20px; left: 50%;
+  position: absolute;
+  bottom: 30px;          /* pegada al fondo del papel */
+  left: 50%;
   transform: translate(-50%, 0) rotate(5deg) scale(0);
   background: white; padding: 10px 10px 25px 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2); opacity: 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  opacity: 0;
   transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 10; width: calc(150px + 20px); box-sizing: border-box;
+  z-index: 10;
+  width: calc(150px + 20px); box-sizing: border-box;
 }
 
 #photo-container.show {
-  transform: translate(-50%, 0) rotate(5deg) scale(1); opacity: 1;
+  transform: translate(-50%, 0) rotate(5deg) scale(1);
+  opacity: 1;
 }
 
 #photo-container img {
@@ -140,8 +156,10 @@ html, body, #wrapper {
 }
 
 #photo-container p {
-  text-align: center; font-family: "Courier New", Courier, monospace;
-  font-size: 1.5rem; color: #d81b60; margin: 15px 0 0 0; font-weight: bold;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5rem; color: #d81b60;
+  margin: 15px 0 0 0; font-weight: bold;
 }
 
 @keyframes blink { 0%, 49% { opacity: 1; } 50%, 99% { opacity: 0; } }
@@ -165,9 +183,10 @@ html, body, #wrapper {
 
 #music-btn {
   position: fixed; bottom: 20px; right: 20px;
-  background: #ff4081; color: white; padding: 10px 16px;
-  border-radius: 999px; cursor: pointer; z-index: 999;
+  background: #ff4081; color: white;
+  padding: 10px 16px; border-radius: 999px;
+  cursor: pointer; z-index: 999;
   font-family: 'Roboto Mono', monospace; font-size: 14px;
-  box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+  box-shadow: 0 4px 15px rgba(255,64,129,0.4);
   border: none;
 }
