@@ -17,14 +17,15 @@ let HAS_STARTED_TYPING = false,
     LAST_TYPE_TIMESTAMP = 0
 
 const isMobile = window.innerWidth < 600
+const paperWidth = isMobile ? window.innerWidth * 0.95 : Math.min(window.innerWidth * 0.9, 500)
+const usablePaperWidth = paperWidth - 100 // restar margen izquierdo
 
 const MIN_COL = 9,
-      MAX_COL = isMobile ? 22 : 38,
+      MAX_COL = isMobile ? Math.floor(usablePaperWidth / 7) : 38,
       MIN_ROW = 4,
       MAX_ROW = isMobile ? 70 : 32,
-      LETTER_WIDTH = isMobile ? 6.2 : 10.8,
+      LETTER_WIDTH = isMobile ? 7 : 10.8,
       LETTER_HEIGHT = isMobile ? 17 : 20,
-      COLORS = {
         COLOR1: 'rgb(255, 64, 129)',
         COLOR2: 'rgb(194, 24, 91)',
         COLOR3: 'rgb(255, 128, 171)',
