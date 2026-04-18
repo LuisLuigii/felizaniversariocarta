@@ -17,10 +17,10 @@ let HAS_STARTED_TYPING = false,
     LAST_TYPE_TIMESTAMP = 0
 
 const MIN_COL = 9,
-      MAX_COL = (LETTERS.clientWidth / 10) - 2,
+      MAX_COL = 36,
       MIN_ROW = 4,
-      MAX_ROW = 34,
-      LETTER_WIDTH = 11.1,
+      MAX_ROW = 44,
+      LETTER_WIDTH = 10.8,
       LETTER_HEIGHT = 20,
       COLORS = {
         COLOR1: 'rgb(255, 64, 129)', 
@@ -53,15 +53,12 @@ const getRandPosOffScreen = () => {
   const lowX1 = 0 - (window.innerWidth * 0.3),
         highX1 = 0 - (window.innerWidth * 0.2),
         lowY1 = 0, highY1 = window.innerHeight,
-        
         lowX2 = window.innerWidth * 1.2,
         highX2 = window.innerWidth * 1.3,
         lowY2 = 0, highY2 = window.innerHeight,
-        
         lowX3 = 0, highX3 = window.innerWidth,
         lowY3 = 0 - (window.innerHeight * 0.3),
         highY3 = 0 - (window.innerHeight * 0.2),
-        
         lowX4 = 0, highX4 = window.innerWidth,
         lowY4 = window.innerHeight * 1.2,
         highY4 = window.innerHeight * 1.3
@@ -118,17 +115,14 @@ const bumpLetterPos = isUp => {
   if(isUp){
     if(STATE.pos.col < MAX_COL){
       STATE.pos.col = Math.min(STATE.pos.col + 1, MAX_COL)
-    }
-    else{
+    } else {
       STATE.pos.col = MIN_COL
       STATE.pos.row = Math.min(STATE.pos.row + 1, MAX_ROW)
     }
-  }
-  else{
+  } else {
     if(STATE.pos.col > MIN_COL){
       STATE.pos.col = Math.max(STATE.pos.col - 1, MIN_COL)
-    }
-    else{
+    } else {
       STATE.pos.col = MAX_COL
       STATE.pos.row = Math.max(STATE.pos.row - 1, MIN_ROW)
     }
@@ -146,8 +140,7 @@ const determineFinalLetterPos = () => {
   if(STATE.pos.col <= MAX_COL){
     x = STATE.pos.col * LETTER_WIDTH
     y = STATE.pos.row * LETTER_HEIGHT
-  }
-  else{
+  } else {
     x = STATE.pos.col * LETTER_WIDTH
     y = (STATE.pos.row + 1) * LETTER_HEIGHT
   }
@@ -181,14 +174,13 @@ const typeLetter = key => {
 let typeInterval = null
 const typeSentence = sentence => {
   let i = 0
-  
   HAS_STARTED_TYPING = true
   
   typeInterval = setInterval(() => {
     if (sentence[i] === '|') {
-      STATE.pos.col = MIN_COL;
-      STATE.pos.row = Math.min(STATE.pos.row + 1, MAX_ROW);
-      bumpCursorPos();
+      STATE.pos.col = MIN_COL
+      STATE.pos.row = Math.min(STATE.pos.row + 1, MAX_ROW)
+      bumpCursorPos()
     } else {
       typeLetter(sentence[i])
     }
@@ -196,8 +188,8 @@ const typeSentence = sentence => {
     if(i === sentence.length - 1) {
       clearInterval(typeInterval)
       setTimeout(() => {
-        addClass(getEl('photo-container'), 'show');
-        removeClass(PAPER, 'typing');
+        addClass(getEl('photo-container'), 'show')
+        removeClass(PAPER, 'typing')
       }, 1000)
     }
     i++
@@ -208,30 +200,37 @@ const checkIfTyping = () => {
   const timeToLastType = moment() - LAST_TYPE_TIMESTAMP
   if(!PAPER.classList.contains('typing') && timeToLastType <= 300){
     addClass(PAPER, 'typing')
-  }
-  else if(PAPER.classList.contains('typing') && timeToLastType > 300){
+  } else if(PAPER.classList.contains('typing') && timeToLastType > 300){
     removeClass(PAPER, 'typing')
   }
 }
 
 window.onload = () => {
-  const romanticLetter = "||||Feliz Aniversariooooo ositaaa!! ||No sé como expresar lo que siento en este momento porque no encuentro las palabras correctas para decirlo. ||Un año juntos donde ha habido de todo, momentos increibles los cuales siempre llevare en mi memoria, momentos en donde me da mucho miedo perderte y solo quiero me abraces con todas tus fuerzas. ||Pero sobre todo, quiero que sigamos fortaleciendo esta bonita conexión que tenemos, donde aprendamos y nos sigamos diciendo cuanto nos amamos el uno al otro. || Te amo mi osita❤️";
-  
+  // 🎵 Música
+  const audio = new Audio('cancion.mp3')
+  audio.loop = true
+  audio.volume = 0.5
+  audio.play().catch(() => {})
+  document.getElementById('music-btn').addEventListener('click', () => {
+    audio.play()
+    document.getElementById('music-btn').style.display = 'none'
+  })
+
+  const romanticLetter = "||||Feliz Aniversariooooo ositaaa!!||No se como expresar lo que siento|en este momento porque no encuentro|las palabras correctas para decirlo.||Un año juntos donde ha habido de|todo, momentos increibles los cuales|siempre llevare en mi memoria,|momentos en donde me da mucho|miedo perderte y solo quiero que|me abraces con todas tus fuerzas.||Pero sobre todo, quiero que sigamos|fortaleciendo esta bonita conexion|que tenemos, donde aprendamos y nos|sigamos diciendo cuanto nos amamos.||Te amo mi osita ❤️"
+
   setTimeout(() => {
     typeSentence(romanticLetter)
-  }, 1000);
-  
+  }, 1000)
+
   setInterval(() => checkIfTyping(), 300)
 }
 
-// DESPUÉS (funciona con todas las imágenes)
-let currentSlide = 0;
-
+// Slideshow
+let currentSlide = 0
 setInterval(() => {
-  const slides = document.querySelectorAll('.slide');
-  if (slides.length < 2) return;
-
-  slides[currentSlide].classList.remove('active');
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add('active');
-}, 2000);
+  const slides = document.querySelectorAll('.slide')
+  if (slides.length < 2) return
+  slides[currentSlide].classList.remove('active')
+  currentSlide = (currentSlide + 1) % slides.length
+  slides[currentSlide].classList.add('active')
+}, 2000)
