@@ -18,8 +18,6 @@ let HAS_STARTED_TYPING = false,
 
 const isMobile = window.innerWidth < 600
 
-const isMobile = window.innerWidth < 600
-
 const MIN_COL = 9,
       MAX_COL = isMobile ? 22 : 38,
       MIN_ROW = 4,
