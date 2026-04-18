@@ -19,11 +19,11 @@ let HAS_STARTED_TYPING = false,
 const isMobile = window.innerWidth < 600
 
 const MIN_COL = 9,
-      MAX_COL = isMobile ? 24 : 38,
+      MAX_COL = isMobile ? 18 : 38,
       MIN_ROW = 4,
-      MAX_ROW = isMobile ? 50 : 32,
-      LETTER_WIDTH = isMobile ? 8.5 : 10.8,
-      LETTER_HEIGHT = isMobile ? 18 : 20,
+      MAX_ROW = isMobile ? 60 : 32,
+      LETTER_WIDTH = isMobile ? 7.5 : 10.8,
+      LETTER_HEIGHT = isMobile ? 17 : 20,
       COLORS = {
         COLOR1: 'rgb(255, 64, 129)',
         COLOR2: 'rgb(194, 24, 91)',
