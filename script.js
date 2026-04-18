@@ -189,13 +189,13 @@ window.onload = () => {
     "mi memoria, momentos en donde|",
     "me da mucho miedo perderte y|",
     "solo quiero que me abraces con|",
-    "todas tus fuerzas.||",
+    "todas tus fuerzas.|",
     "Pero sobre todo, quiero que|",
     "sigamos fortaleciendo esta|",
     "bonita conexion que tenemos,|",
     "donde aprendamos y nos sigamos|",
     "diciendo cuanto nos amamos|",
-    "el uno al otro.||",
+    "el uno al otro.|",
     "Te amo mi osita ❤️"
   ].join('')
 
