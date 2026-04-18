@@ -19,7 +19,7 @@ let HAS_STARTED_TYPING = false,
 const MIN_COL = 9,
       MAX_COL = 38,
       MIN_ROW = 4,
-      MAX_ROW = 30,
+      MAX_ROW = 34,
       LETTER_WIDTH = 10.8,
       LETTER_HEIGHT = 20,
       COLORS = {
@@ -177,8 +177,8 @@ window.onload = () => {
 
   // Maximo ~19 caracteres por linea para que no se corten palabras
   const romanticLetter = [
-    "||||",
-    "Feliz Aniversariooooo ositaaa!!||",
+    "||",
+    "Feliz Aniversarioooo ositaaa!!||",
     "No se como expresar lo que|",
     "siento en este momento porque|",
     "no encuentro las palabras|",
