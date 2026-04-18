@@ -194,8 +194,8 @@ window.onload = () => {
     "Pero sobre todo, quiero que|",
     "sigamos fortaleciendo esta|",
     "bonita conexion que tenemos,|",
-    "donde aprendamos y nos sigamos|",
-    "diciendo cuanto nos|",
+    "donde aprendamos y sigamos|",
+    "diciendonos cuanto nos|",
     "amamos el uno al otro.|",
     "Te amo mi osita ❤️"
   ].join('')
