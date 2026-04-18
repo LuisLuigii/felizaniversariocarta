@@ -21,7 +21,7 @@ const paperWidth = isMobile ? window.innerWidth * 0.95 : Math.min(window.innerWi
 const usablePaperWidth = paperWidth - 100
 
 const MIN_COL = 9,
-      MAX_COL = isMobile ? Math.floor(usablePaperWidth / 11) : 38,
+      MAX_COL = isMobile ? 38 : 38,
       MIN_ROW = 4,
       MAX_ROW = isMobile ? 70 : 32,
       LETTER_WIDTH = isMobile ? 6.5 : 10.8,
@@ -179,15 +179,30 @@ window.onload = () => {
     document.getElementById('music-btn').style.display = 'none'
   })
 
-  // Maximo ~19 caracteres por linea para que no se corten palabras
-  const romanticLetter = [
+  const romanticLetter = isMobile ? [
+    "||",
+    "Feliz Aniversarioooo ositaaa!!||",
+    "No se como expresar lo que|",
+    "siento porque no encuentro|",
+    "las palabras correctas.||",
+    "Un año juntos con momentos|",
+    "increibles que llevare en|",
+    "mi memoria. Me da miedo|",
+    "perderte y solo quiero que|",
+    "me abraces con tus fuerzas.||",
+    "Pero sobre todo quiero que|",
+    "sigamos fortaleciendo esta|",
+    "conexion, diciéndonos cuanto|",
+    "nos amamos el uno al otro.|",
+    "Te amo mi osita ❤️"
+  ].join('') : [
     "||",
     "Feliz Aniversarioooo ositaaa!!||",
     "No se como expresar lo que|",
     "siento en este momento porque|",
     "no encuentro las palabras|",
     "correctas para decirlo.||",
-    " Y es que ya es un año|",
+    "Y es que ya es un año|",
     "juntos donde ha habido|",
     "de todo, momentos increibles|",
     "los cuales siempre llevare en|",
