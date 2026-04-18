@@ -170,14 +170,25 @@ const checkIfTyping = () => {
 }
 
 window.onload = () => {
+  // Música - suena al primer toque en cualquier parte
   const audio = new Audio('cancion.mp3')
   audio.loop = true
   audio.volume = 0.5
-  audio.play().catch(() => {})
-  document.getElementById('music-btn').addEventListener('click', () => {
-    audio.play()
-    document.getElementById('music-btn').style.display = 'none'
+  
+  const playAudio = () => {
+    audio.play().catch(() => {})
+    document.removeEventListener('touchstart', playAudio)
+    document.removeEventListener('click', playAudio)
+  }
+  
+  // Intenta autoplay directo, si falla espera el primer toque
+  audio.play().catch(() => {
+    document.addEventListener('touchstart', playAudio)
+    document.addEventListener('click', playAudio)
   })
+  
+  // Quita el botón ya que no es necesario
+  document.getElementById('music-btn').style.display = 'none'
 
   const romanticLetter = isMobile ? [
     "||",
