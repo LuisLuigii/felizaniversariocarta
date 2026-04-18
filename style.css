@@ -199,34 +199,30 @@ html, body, #wrapper {
   }
 
   .letter {
-    font-size: 11px !important;
-    letter-spacing: 2px !important;
-    line-height: 34px;
-    height: 34px;
+    font-size: 14px !important;
+    letter-spacing: 4px !important;
+    line-height: 40px;
+    height: 40px;
     margin-left: 0px;
-    margin-top: 8px;
+    margin-top: 10px;
   }
 
   .news-letter {
-    height: 26px;
-  }
-
-  #wrapper #paper #cursor {
-    height: 17px;
+    height: 30px;
   }
 
   #photo-container {
     bottom: 30px;
-    width: calc(110px + 20px);
+    width: calc(120px + 20px);
   }
 
   #photo-container img {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
   }
 
   #photo-container p {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   #music-btn {
