@@ -224,10 +224,14 @@ window.onload = () => {
   setInterval(() => checkIfTyping(), 300)
 }
 
+// DESPUÉS (funciona con todas las imágenes)
+let currentSlide = 0;
+
 setInterval(() => {
   const slides = document.querySelectorAll('.slide');
-  if (slides.length > 1) {
-    slides[0].classList.toggle('active');
-    slides[1].classList.toggle('active');
-  }
+  if (slides.length < 2) return;
+
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
 }, 2000);
