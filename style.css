@@ -194,19 +194,20 @@ html, body, #wrapper {
 @media (max-width: 600px) {
   #wrapper #paper {
     width: 95%;
-    height: 1500px;
+    height: 1600px;
     margin: 20px 0px;
   }
 
   .letter {
-    font-size: 13px !important;
-    letter-spacing: 6px !important;
+    font-size: 12px !important;
+    letter-spacing: 3px !important;
     line-height: 34px;
     height: 34px;
+    margin-left: 0px;
   }
 
   .news-letter {
-    height: 28px;
+    height: 26px;
   }
 
   #wrapper #paper #cursor {
@@ -215,20 +216,20 @@ html, body, #wrapper {
 
   #photo-container {
     bottom: 30px;
-    width: calc(130px + 20px);
+    width: calc(120px + 20px);
   }
 
   #photo-container img {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
   }
 
   #photo-container p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   #music-btn {
-    font-size: 12px;
+    font-size: 11px;
     padding: 8px 12px;
     bottom: 10px;
     right: 10px;
