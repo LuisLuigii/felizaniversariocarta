@@ -21,11 +21,11 @@ const paperWidth = isMobile ? window.innerWidth * 0.95 : Math.min(window.innerWi
 const usablePaperWidth = paperWidth - 100
 
 const MIN_COL = 9,
-      MAX_COL = isMobile ? Math.floor(usablePaperWidth / 7) : 38,
+      MAX_COL = isMobile ? Math.floor(usablePaperWidth / 8.5) - 2 : 38,
       MIN_ROW = 4,
       MAX_ROW = isMobile ? 70 : 32,
-      LETTER_WIDTH = isMobile ? 7 : 10.8,
-      LETTER_HEIGHT = isMobile ? 17 : 20,
+      LETTER_WIDTH = isMobile ? 8.5 : 10.8,
+      LETTER_HEIGHT = 20,
       COLORS = {
         COLOR1: 'rgb(255, 64, 129)',
         COLOR2: 'rgb(194, 24, 91)',
