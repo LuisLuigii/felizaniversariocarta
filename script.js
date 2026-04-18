@@ -215,7 +215,7 @@ const checkIfTyping = () => {
 }
 
 window.onload = () => {
-  const romanticLetter = "||||Queria hacerte algo especial... ||Si pudiera elegir un lugar seguro,|sería a tu lado. Cuanto más tiempo|estoy contigo más te amo. ||Amor de mi Vida. ❤️";
+  const romanticLetter = "||||Feliz Aniversariooooo ositaaa!! ||No sé como expresar lo que siento en este momento porque no encuentro las palabras correctas para decirlo. ||Un año juntos donde ha habido de todo, momentos increibles los cuales siempre llevare en mi memoria, momentos en donde me da mucho miedo perderte y solo quiero me abraces con todas tus fuerzas. ||Pero sobre todo, quiero que sigamos fortaleciendo esta bonita conexión que tenemos, donde aprendamos y nos sigamos diciendo cuanto nos amamos el uno al otro. || Te amo mi osita❤️";
   
   setTimeout(() => {
     typeSentence(romanticLetter)
