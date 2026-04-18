@@ -24,7 +24,7 @@ const MIN_COL = 9,
       MAX_COL = isMobile ? Math.floor(usablePaperWidth / 11) : 38,
       MIN_ROW = 4,
       MAX_ROW = isMobile ? 70 : 32,
-      LETTER_WIDTH = isMobile ? 8.5 : 10.8,
+      LETTER_WIDTH = isMobile ? 6.5 : 10.8,
       LETTER_HEIGHT = 20,
       COLORS = {
         COLOR1: 'rgb(255, 64, 129)',
