@@ -194,7 +194,7 @@ html, body, #wrapper {
 @media (max-width: 600px) {
   #wrapper #paper {
     width: 95%;
-    height: 1600px;
+    height: 1150px;   /* ← era 1600px */
     margin: 20px 0px;
   }
 
