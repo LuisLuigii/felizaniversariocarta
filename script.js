@@ -17,9 +17,9 @@ let HAS_STARTED_TYPING = false,
     LAST_TYPE_TIMESTAMP = 0
 
 const MIN_COL = 9,
-      MAX_COL = 28,
+      MAX_COL = 38,
       MIN_ROW = 4,
-      MAX_ROW = 35,
+      MAX_ROW = 30,
       LETTER_WIDTH = 10.8,
       LETTER_HEIGHT = 20,
       COLORS = {
@@ -179,7 +179,7 @@ window.onload = () => {
   const romanticLetter = [
     "||||",
     "Feliz Aniversario|",
-    "ositaaa!! 🎉||",
+    "ositaaa!!||",
     "No se como|",
     "expresar lo que|",
     "siento porque no|",
