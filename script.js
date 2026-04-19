@@ -248,14 +248,18 @@ setInterval(() => {
   slides[currentSlide].classList.add('active')
 }, 2000)
 
-// Forzar loop de los GIFs
-const fondos = ['fondo-izq', 'fondo-der']
-fondos.forEach(id => {
+// Loop de GIFs sin parpadeo
+function loopGif(id, duracionMs) {
   const gif = document.getElementById(id)
   if (!gif) return
-  const src = gif.src
+  const src = gif.src.split('?')[0]
+  let t = Date.now()
+  gif.src = src + '?t=' + t
   setInterval(() => {
-    gif.src = ''
-    gif.src = src
-  }, 3000) // cambia 3000 por la duración real de tu GIF en milisegundos
-})
+    t = Date.now()
+    gif.src = src + '?t=' + t
+  }, duracionMs)
+}
+
+loopGif('fondo-izq', 3000) // duración de fondo1.gif
+loopGif('fondo-der', 3000) // duración de fondo2.gif
