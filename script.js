@@ -20,8 +20,8 @@ const isMobile = window.innerWidth < 600
 const paperWidth = isMobile ? window.innerWidth * 0.95 : Math.min(window.innerWidth * 0.9, 500)
 const usablePaperWidth = paperWidth - 100
 
-  const MIN_COL = isMobile ? 9 : 9,
-      MAX_COL = isMobile ? 38 : 38,
+const MIN_COL = 9,
+      MAX_COL = isMobile ? 32 : 38,
       MIN_ROW = 4,
       MAX_ROW = isMobile ? 70 : 32,
       LETTER_WIDTH = isMobile ? 9.5 : 10.8,
@@ -237,6 +237,20 @@ window.onload = () => {
 
   setTimeout(() => typeSentence(romanticLetter), 1000)
   setInterval(() => checkIfTyping(), 300)
+
+  // Loop GIFs - dentro de onload para que ya existan
+  function loopGif(id, duracionMs) {
+    const gif = document.getElementById(id)
+    if (!gif) return
+    const src = gif.src.split('?')[0]
+    gif.src = src + '?t=' + Date.now()
+    setInterval(() => {
+      gif.src = src + '?t=' + Date.now()
+    }, duracionMs)
+  }
+
+  loopGif('fondo-izq', 3000)
+  loopGif('fondo-der', 3000)
 }
 
 let currentSlide = 0
@@ -247,19 +261,3 @@ setInterval(() => {
   currentSlide = (currentSlide + 1) % slides.length
   slides[currentSlide].classList.add('active')
 }, 2000)
-
-// Loop de GIFs sin parpadeo
-function loopGif(id, duracionMs) {
-  const gif = document.getElementById(id)
-  if (!gif) return
-  const src = gif.src.split('?')[0]
-  let t = Date.now()
-  gif.src = src + '?t=' + t
-  setInterval(() => {
-    t = Date.now()
-    gif.src = src + '?t=' + t
-  }, duracionMs)
-}
-
-loopGif('fondo-izq', 3000) // duración de fondo1.gif
-loopGif('fondo-der', 3000) // duración de fondo2.gif
