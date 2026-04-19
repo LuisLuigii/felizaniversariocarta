@@ -11,25 +11,27 @@ html, body, #wrapper {
   overflow-x: hidden; overflow-y: auto; position: relative;
 }
 
-/* GIFs de fondo izquierda y derecha */
-#fondo-izq {
+#wrapper::before {
+  content: '';
   position: fixed;
-  left: 30px; top: 50%;
-  transform: translateY(-50%);
-  width: 350px;
+  left: 30px; top: 0;
+  width: 350px; height: 100%;
+  background: url('fondo1.gif') no-repeat center center;
+  background-size: contain;
   z-index: 0;
   pointer-events: none;
 }
 
-#fondo-der {
+#wrapper::after {
+  content: '';
   position: fixed;
-  right: 30px; top: 50%;
-  transform: translateY(-50%);
-  width: 350px;
+  right: 30px; top: 0;
+  width: 350px; height: 100%;
+  background: url('fondo2.gif') no-repeat center center;
+  background-size: contain;
   z-index: 0;
   pointer-events: none;
 }
-
 #wrapper #paper {
   background-color: #fff9fa; border-radius: 2px;
   box-shadow: rgba(0,0,0,0.25) 0px 14px 45px, rgba(0,0,0,0.22) 0px 10px 18px;
