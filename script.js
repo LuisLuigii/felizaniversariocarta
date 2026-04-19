@@ -247,3 +247,15 @@ setInterval(() => {
   currentSlide = (currentSlide + 1) % slides.length
   slides[currentSlide].classList.add('active')
 }, 2000)
+
+// Forzar loop de los GIFs
+const fondos = ['fondo-izq', 'fondo-der']
+fondos.forEach(id => {
+  const gif = document.getElementById(id)
+  if (!gif) return
+  const src = gif.src
+  setInterval(() => {
+    gif.src = ''
+    gif.src = src
+  }, 3000) // cambia 3000 por la duración real de tu GIF en milisegundos
+})
