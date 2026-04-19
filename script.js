@@ -237,20 +237,6 @@ window.onload = () => {
 
   setTimeout(() => typeSentence(romanticLetter), 1000)
   setInterval(() => checkIfTyping(), 300)
-
-  // Loop GIFs - dentro de onload para que ya existan
-  function loopGif(id, duracionMs) {
-    const gif = document.getElementById(id)
-    if (!gif) return
-    const src = gif.src.split('?')[0]
-    gif.src = src + '?t=' + Date.now()
-    setInterval(() => {
-      gif.src = src + '?t=' + Date.now()
-    }, duracionMs)
-  }
-
-  loopGif('fondo-izq', 3000)
-  loopGif('fondo-der', 3000)
 }
 
 let currentSlide = 0
